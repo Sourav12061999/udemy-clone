@@ -38,7 +38,7 @@ const Navbar = ({ signed }) => {
   };
 
   return (
-    <AppBar position="static" color="inherit">
+    <AppBar position="static" color="inherit" sx={{ mb: 1 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography variant="h6" noWrap component="div" sx={logo}>
