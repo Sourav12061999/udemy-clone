@@ -15,11 +15,11 @@ function App() {
           {/* This is the route of the Catagory page of the website. When user clicks on any catagory
            All courses of that catagory in a new page will showup
           */}
-          <Route path="/:catagory" element={<Catagory />} />
+          <Route path="/catagory/:catagory" element={<Catagory />} />
           {/* This is the course page of the website. When user clicks on a course a course card a new page
            with all details about that course will show up.
           */}
-          <Route path="/:course" element={<Course />} />
+          <Route path="/courses/:course" element={<Course />} />
         </Routes>
       </Router>
     </div>

@@ -5,6 +5,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Box } from "@mui/system";
+import { Rating } from "@mui/material";
+import { BsFillCartPlusFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function CourseCard({ data }) {
   return (
@@ -12,21 +16,50 @@ export default function CourseCard({ data }) {
       <CardMedia
         component="img"
         height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image={data.image}
         alt="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+        <Link to={`/courses/${data.course_id}`}>
+          <Box
+            overflow="hidden"
+            whiteSpace="pre-line"
+            textOverflow="ellipsis"
+            height={40}
+            sx={{
+              fontSize: "15px",
+              fontWeight: 600,
+              ":hover": {
+                cursor: "pointer",
+                color: "#e040fb",
+                textDecoration: "underline",
+              },
+            }}
+          >
+            {data.heading}
+          </Box>
+        </Link>
+        <Typography
+          noWrap
+          sx={{ fontSize: "12px", my: 0.5 }}
+          variant="body2"
+          color="text.secondary"
+        >
+          {data.author}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        <Rating name="read-only" value={data.rating} precision={0.1} readOnly />
+        <Typography sx={{ fontWeight: 600 }}>₹{data.price}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button
+          fullWidth
+          noWrap
+          color="secondary"
+          variant="contained"
+          endIcon={<BsFillCartPlusFill />}
+        >
+          Add To Cart
+        </Button>
       </CardActions>
     </Card>
   );
