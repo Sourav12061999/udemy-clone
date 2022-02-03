@@ -12,7 +12,6 @@ function Catagory({ heading, urlParam }) {
       .then((res) => res.json())
       .then((res) => {
         setData(res);
-        console.log(res);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -27,7 +26,7 @@ function Catagory({ heading, urlParam }) {
           <>
             {Data.map((card) => {
               return (
-                <Grid spacing={1} sx={{ ml: 1 }} item xs={2.2} key={card._id}>
+                <Grid sx={{ ml: 1 }} item xs={2.2} key={card._id}>
                   <CourseCard data={card} />
                 </Grid>
               );

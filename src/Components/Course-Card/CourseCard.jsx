@@ -53,7 +53,6 @@ export default function CourseCard({ data }) {
       <CardActions>
         <Button
           fullWidth
-          noWrap
           color="secondary"
           variant="contained"
           endIcon={<BsFillCartPlusFill />}
