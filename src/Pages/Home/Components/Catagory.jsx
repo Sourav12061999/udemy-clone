@@ -21,12 +21,20 @@ function Catagory({ heading, urlParam }) {
       <Typography gutterBottom variant="h5" sx={{ fontWeight: 600, ml: 1 }}>
         {heading}
       </Typography>
-      <Grid container sx={{ width: "100%" }}>
+      <Grid container sx={{ margin: "auto" }}>
         {Data ? (
           <>
             {Data.map((card) => {
               return (
-                <Grid sx={{ ml: 1 }} item xs={2.2} key={card._id}>
+                <Grid
+                  sx={{ ml: 1 }}
+                  item
+                  xs={11}
+                  sm={5}
+                  md={3.5}
+                  lg={2.2}
+                  key={card._id}
+                >
                   <CourseCard data={card} />
                 </Grid>
               );

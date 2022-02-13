@@ -1,50 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 import Search from "./Search";
 import { BsCart3 } from "react-icons/bs";
 import Mobilenav from "./Mobilenav";
+import { Link } from "react-router-dom";
+import url from "../../env";
+import { UserdataContest } from "../../App";
+import Avatar from "@mui/material/Avatar";
+import { deepOrange } from "@mui/material/colors";
 // Importing styles
 import styles from "./styles";
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
-const Navbar = ({ signed }) => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+const Navbar = () => {
+  const { userData } = useContext(UserdataContest);
   // Destructuring the styles
-  const { appbar, logo, logo2, extraButtons, hoverPink } = styles;
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const { logo, extraButtons, hoverPink } = styles;
 
   return (
     <AppBar position="static" color="inherit" sx={{ mb: 0.5 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography variant="h6" noWrap component="div" sx={logo}>
-            Udemy
-          </Typography>
-          <Mobilenav />
+          <Link to={"/"}>
+            <Box>
+              <Typography variant="h6" noWrap component="div" sx={logo}>
+                Udemy
+              </Typography>
+            </Box>
+          </Link>
           <Box
             sx={{
               flexGrow: 1,
@@ -75,66 +63,37 @@ const Navbar = ({ signed }) => {
             >
               Tech on Udemy
             </Button>
-            <Button startIcon={<BsCart3 />} sx={{ color: "black" }}></Button>
-            {!signed ? (
+            {!userData ? (
               <Box>
-                <Button
-                  sx={{ color: "black", border: "1px solid black" }}
-                  variant="outlined"
-                >
-                  Login
-                </Button>
-                <Button
-                  sx={{
-                    color: "white",
-                    backgroundColor: "black",
-                    ml: 2,
-                    ":hover": {
-                      backgroundColor: "#424242",
-                    },
-                  }}
-                  variant="contained"
-                >
-                  Sign Up
-                </Button>
+                <a href={`${url}/userSignup/`}>
+                  <Button
+                    sx={{ color: "black", border: "1px solid black" }}
+                    variant="outlined"
+                  >
+                    Login
+                  </Button>
+                </a>
+                <a href={`${url}/userSignup/auth/google`}>
+                  <Button
+                    sx={{
+                      color: "white",
+                      backgroundColor: "black",
+                      ml: 2,
+                      ":hover": {
+                        backgroundColor: "#424242",
+                      },
+                    }}
+                    variant="contained"
+                  >
+                    Sign Up
+                  </Button>
+                </a>
               </Box>
             ) : (
               <></>
             )}
           </Box>
-          {signed ? (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-          ) : (
-            <></>
-          )}
+          <Mobilenav userData={userData} />
         </Toolbar>
       </Container>
     </AppBar>

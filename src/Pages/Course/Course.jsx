@@ -9,6 +9,7 @@ import Description from "./Components/Description";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CheckIcon from "@mui/icons-material/Check";
 import Contentcard from "./Components/Contentcard";
+import Similar from "./Components/Similar";
 function Course() {
   const [courseData, setcourseData] = useState({});
   const { course } = useParams();
@@ -22,7 +23,7 @@ function Course() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [course]);
 
   return (
     <Box>
@@ -55,6 +56,9 @@ function Course() {
                 data={courseData.course_includes}
               />
             </Box>
+          </Box>
+          <Box sx={{ margin: "auto", mt: 4, width: "90%" }}>
+            <Similar />
           </Box>
         </>
       ) : null}
