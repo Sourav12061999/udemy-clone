@@ -11,6 +11,7 @@ const main = {
 const courseCard = {
   Card: {
     display: "flex",
+    flexDirection: { xs: "column", md: "row" },
     mb: 2,
     width: "100%",
   },

@@ -54,7 +54,7 @@ function CourseCard({ id, settotalCart }) {
               height={220}
               image={cardData?.image}
               alt="green iguana"
-              sx={{ width: "350px" }}
+              sx={{ width: { xs: "100%", md: "350px" } }}
             />
           </Box>
           <CardContent sx={courseCard.cardcontent}>

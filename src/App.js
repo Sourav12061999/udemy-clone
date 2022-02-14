@@ -20,6 +20,7 @@ function App() {
       fetch(`${url}/getuser/userID=${userID.trim()}`)
         .then((res) => res.json())
         .then((res) => {
+          console.log(res);
           setUserData(res);
         })
         .catch((error) => console.error(error));

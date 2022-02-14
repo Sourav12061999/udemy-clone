@@ -13,9 +13,14 @@ function Cart() {
       <Typography sx={main.heading} variant="h4">
         Shopping Cart
       </Typography>
-      <Box sx={{ display: "flex" }}>
-        <Box sx={{ width: "70%" }}>
-          {userData?.cartCourses.map((el, i) => {
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column-reverse", sm: "row" },
+        }}
+      >
+        <Box sx={{ width: { xs: "100%", sm: "70%" } }}>
+          {userData?.cartCourses?.map((el) => {
             return (
               <React.Fragment key={el}>
                 <CourseCard
@@ -27,7 +32,7 @@ function Cart() {
             );
           })}
         </Box>
-        <Box sx={{ width: "29%", ml: 1 }}>
+        <Box sx={{ width: { xs: "100%", sm: "29%" }, ml: 1 }}>
           <Checkout totalCart={totalCart} />
         </Box>
       </Box>
