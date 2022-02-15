@@ -30,7 +30,9 @@ function Contentcard({ price, data, course_id }) {
           ₹{price}
         </Typography>
         <Button
-          onClick={() => {}}
+          onClick={() => {
+            update_cart(course_id);
+          }}
           color="secondary"
           fullWidth
           variant="contained"

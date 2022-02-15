@@ -14,11 +14,11 @@ function CatagoryBox({ open, setOpen }) {
     <Dialog onClick={() => setOpen(false)} open={open}>
       <DialogTitle>All Catagories</DialogTitle>
       <List sx={{ pt: 0 }}>
-        {catagory.map((el) => {
+        {catagory.map((el, i) => {
           let Icons = el.icon;
           return (
-            <Link to={`/${el.name.split(" ")[0]}`}>
-              <ListItem button key={el.name}>
+            <Link key={el.name} to={`/catagory/${i}`}>
+              <ListItem button>
                 <ListItemAvatar>
                   <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
                     <Icons />

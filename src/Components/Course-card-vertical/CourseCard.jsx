@@ -19,6 +19,7 @@ function CourseCard({ id, settotalCart }) {
       .then((res) => res.json())
       .then((res) => {
         setcardData(res);
+        console.log(res);
         settotalCart((prev) => prev + res?.price);
       })
       .catch((error) => console.error(error));

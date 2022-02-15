@@ -19,6 +19,7 @@ function useUpdatecart() {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log("Hello Data", data);
           setUserData(data);
         })
         .catch((error) => {
