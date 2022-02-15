@@ -4,9 +4,10 @@ const Main = {
     margin: "auto",
     mt: 3,
     display: "flex",
+    flexDirection: { xs: "column-reverse", md: "row" },
   },
   leftContent: {
-    width: "60%",
+    width: { xs: "100%", md: "60%" },
     pr: "2%",
   },
 };
@@ -14,15 +15,17 @@ const Main = {
 const blackBox = {
   box: {
     width: "100%",
-    height: 300,
+    minHeight: 300,
     backgroundColor: "black",
     boxSizing: "border-box",
     padding: "2%",
     color: "white",
     display: "flex",
+    flexDirection: { xs: "column-reverse", md: "row" },
+    margin: "auto",
   },
   textBox: {
-    width: "60%",
+    width: { xs: "95%", md: "60%" },
   },
   rating: {
     display: "flex",
@@ -32,13 +35,14 @@ const blackBox = {
     color: "#FFD700",
   },
   image: {
-    width: "30%",
+    width: { xs: "50%", md: "30%" },
     ml: 6,
   },
 };
 const contentcard = {
   card: {
-    width: 400,
+    width: { xs: "100%", md: 400 },
+    mb: 2,
   },
 };
 const description = {

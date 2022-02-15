@@ -29,7 +29,15 @@ function Similar() {
           <>
             {similarData.map((card) => {
               return (
-                <Grid sx={{ ml: 1 }} item xs={2.2} key={card._id}>
+                <Grid
+                  item
+                  sx={{ ml: 1, mb: 1 }}
+                  xs={11}
+                  sm={5}
+                  md={3.5}
+                  lg={2.2}
+                  key={card._id}
+                >
                   <CourseCard data={card} />
                 </Grid>
               );

@@ -9,6 +9,7 @@ import { Avatar } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import { BsCart3 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Badge from "@mui/material/Badge";
 function Mobilenav({ userData }) {
   const pages = ["Products", "Pricing", "Blog"];
   const { logo2 } = styles;
@@ -27,10 +28,11 @@ function Mobilenav({ userData }) {
       ) : (
         <Box sx={{ flexGrow: 0, display: "flex" }}>
           <Link to={"/cart"}>
-            <Button
-              startIcon={<BsCart3 />}
-              sx={{ color: "black", display: "block" }}
-            ></Button>
+            <IconButton>
+              <Badge badgeContent={userData?.cartCourses?.length} color="error">
+                <BsCart3 />
+              </Badge>
+            </IconButton>
           </Link>
           <IconButton sx={{ p: 0, ml: { xs: 1, md: 2 } }}>
             <Avatar sx={{ bgcolor: deepOrange[500] }}>

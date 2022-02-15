@@ -11,7 +11,9 @@ import { GrDocumentDownload, GrAchievement } from "react-icons/gr";
 import { CgInfinity } from "react-icons/cg";
 import { BsPhoneFill } from "react-icons/bs";
 import { SiPytest } from "react-icons/si";
-function Contentcard({ price, data }) {
+import useUpdatecart from "../../../Hooks/useUpdatecart";
+function Contentcard({ price, data, course_id }) {
+  const update_cart = useUpdatecart();
   const icons = [
     MdVideoLabel,
     MdOutlineContactPage,
@@ -21,14 +23,18 @@ function Contentcard({ price, data }) {
     BsPhoneFill,
     GrAchievement,
   ];
-  console.log(data);
   return (
     <Card sx={contentcard.card}>
       <CardContent>
         <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
           ₹{price}
         </Typography>
-        <Button color="secondary" fullWidth variant="contained">
+        <Button
+          onClick={() => {}}
+          color="secondary"
+          fullWidth
+          variant="contained"
+        >
           Add to cart
         </Button>
         <Button sx={{ mt: 1, mb: 3 }} fullWidth variant="outlined">

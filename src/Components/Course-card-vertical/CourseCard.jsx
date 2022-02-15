@@ -10,6 +10,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 import url from "../../env";
 import { UserdataContest } from "../../App";
+import Skeleton from "@mui/material/Skeleton";
 function CourseCard({ id, settotalCart }) {
   const [cardData, setcardData] = useState(null);
   const { userData, setUserData } = useContext(UserdataContest);
@@ -18,8 +19,9 @@ function CourseCard({ id, settotalCart }) {
       .then((res) => res.json())
       .then((res) => {
         setcardData(res);
-        settotalCart((prev) => prev + res.price);
-      });
+        settotalCart((prev) => prev + res?.price);
+      })
+      .catch((error) => console.error(error));
   }, []);
   function deleteCartUser(id, userData) {
     let cartArray = userData?.cartCourses?.filter((el) => {
@@ -95,7 +97,16 @@ function CourseCard({ id, settotalCart }) {
           </CardContent>
         </Card>
       ) : (
-        <></>
+        <Box sx={courseCard.Card}>
+          <Box sx={{ width: { xs: "100%", md: "350px" } }}>
+            <Skeleton variant="rectangular" width={"100%"} height={220} />
+          </Box>
+          <Box sx={courseCard.cardcontent}>
+            <Skeleton />
+            <Skeleton animation="wave" />
+            <Skeleton animation={false} />
+          </Box>
+        </Box>
       )}
     </>
   );
