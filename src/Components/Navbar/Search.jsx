@@ -1,12 +1,12 @@
 import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import { TextField } from "@mui/material";
 import React from "react";
-
+import Autocomplete from "@mui/material/Autocomplete";
 function Search({ size, cont }) {
   const Searchbox = styled("div")(({ theme }) => ({
     position: "relative",
-    border: "1px solid black",
+    border: "1px solid red",
     borderRadius: 20,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     "&:hover": {
@@ -30,32 +30,36 @@ function Search({ size, cont }) {
     justifyContent: "center",
   }));
 
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("sm")]: {
-        width: size,
-      },
-    },
-  }));
   return (
     <>
-      <Searchbox>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder={cont ? cont : "Search for anything"}
-          inputProps={{ "aria-label": "search" }}
-        />
-      </Searchbox>
+      <Autocomplete
+        id="free-solo-demo"
+        freeSolo
+        options={top100Films.map((option) => option.title)}
+        renderInput={(params) => (
+          <TextField
+            color="secondary"
+            sx={{ width: "40vw", mx: 4 }}
+            {...params}
+          />
+        )}
+      />
     </>
   );
 }
 
 export default Search;
+
+const top100Films = [
+  { title: "The Shawshank Redemption", year: 1994 },
+  { title: "The Godfather", year: 1972 },
+  { title: "The Godfather: Part II", year: 1974 },
+  { title: "The Dark Knight", year: 2008 },
+  { title: "12 Angry Men", year: 1957 },
+  { title: "Schindler's List", year: 1993 },
+  { title: "Pulp Fiction", year: 1994 },
+  {
+    title: "The Lord of the Rings: The Return of the King",
+    year: 2003,
+  },
+];

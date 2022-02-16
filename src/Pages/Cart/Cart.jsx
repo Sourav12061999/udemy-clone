@@ -32,7 +32,9 @@ function Cart() {
             );
           })}
         </Box>
-        <Box sx={{ width: { xs: "100%", sm: "29%" }, ml: 1 }}>
+        <Box
+          sx={{ width: { xs: "100%", sm: "29%" }, ml: { xs: 0, sm: 1 }, mb: 1 }}
+        >
           <Checkout totalCart={totalCart} />
         </Box>
       </Box>

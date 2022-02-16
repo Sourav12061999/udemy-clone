@@ -1,13 +1,30 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import url from "../env";
 import { UserdataContest } from "../App";
 function useUpdatecart() {
   const { userData, setUserData } = useContext(UserdataContest);
-  return function update_cart(course_id) {
+  const [snackbarState, setSnackbarState] = useState({});
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  function handleOpen() {
+    setOpenSnackbar(true);
+    setSnackbarState({
+      note: "Course Added to cart",
+      severity: "success",
+    });
+  }
+  function handleWarning(note) {
+    setOpenSnackbar(true);
+    setSnackbarState({
+      note,
+      severity: "error",
+    });
+  }
+  function update_cart(course_id) {
     if (!userData) {
-      alert("Please Sign in/Sign up to add to cart");
+      handleWarning("Please Sign in/Sign up to add to cart");
     } else if (userData?.cartCourses?.includes(course_id)) {
-      alert("This course already in your cart");
+      handleWarning("This course already in your cart");
     } else {
       userData?.cartCourses?.push(course_id);
       fetch(`${url}/getuser/updateCard/${userData?._id}`, {
@@ -19,14 +36,15 @@ function useUpdatecart() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log("Hello Data", data);
+          handleOpen();
           setUserData(data);
         })
         .catch((error) => {
           console.error(error);
         });
     }
-  };
+  }
+  return { snackbarState, openSnackbar, setOpenSnackbar, update_cart };
 }
 
 export default useUpdatecart;

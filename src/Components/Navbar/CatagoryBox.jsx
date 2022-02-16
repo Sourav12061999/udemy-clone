@@ -6,7 +6,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
-import { blue } from "@mui/material/colors";
+import { purple } from "@mui/material/colors";
 import catagory from "../../catagories";
 import { Link } from "react-router-dom";
 function CatagoryBox({ open, setOpen }) {
@@ -17,10 +17,10 @@ function CatagoryBox({ open, setOpen }) {
         {catagory.map((el, i) => {
           let Icons = el.icon;
           return (
-            <Link key={el.name} to={`/catagory/${i}`}>
+            <Link key={el.name} to={`/catagory/${el.name}`}>
               <ListItem button>
                 <ListItemAvatar>
-                  <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>
+                  <Avatar sx={{ bgcolor: purple[100], color: purple[600] }}>
                     <Icons />
                   </Avatar>
                 </ListItemAvatar>
