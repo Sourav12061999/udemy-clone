@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import url from "../../env";
 import { UserdataContest } from "../../App";
 import CatagoryBox from "./CatagoryBox";
-import Autocomplete from "./Autocomplete";
 // Importing styles
 import styles from "./styles";
 const Navbar = () => {
@@ -106,7 +105,6 @@ const Navbar = () => {
         </Container>
       </AppBar>
       <CatagoryBox setOpen={setCatagoryOpen} open={catagoryOpen} />
-      <Autocomplete open={searchOpen} setOpen={setsearchOpen} />
     </>
   );
 };

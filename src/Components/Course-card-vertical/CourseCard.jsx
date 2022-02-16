@@ -52,13 +52,15 @@ function CourseCard({ id, settotalCart }) {
       {cardData ? (
         <Card sx={courseCard.Card}>
           <Box>
-            <CardMedia
-              component="img"
-              height={220}
-              image={cardData?.image}
-              alt="green iguana"
-              sx={{ width: { xs: "100%", md: "350px" } }}
-            />
+            <Link to={`/courses/${cardData?.course_id}`}>
+              <CardMedia
+                component="img"
+                height={220}
+                image={cardData?.image}
+                alt="green iguana"
+                sx={{ width: { xs: "100%", md: "350px" } }}
+              />
+            </Link>
           </Box>
           <CardContent sx={courseCard.cardcontent}>
             <Box>

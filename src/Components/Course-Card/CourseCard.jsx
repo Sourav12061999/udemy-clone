@@ -18,12 +18,17 @@ export default function CourseCard({ data }) {
   return (
     <>
       <Card sx={{ width: "100%", mb: 1 }}>
-        <CardMedia
-          component="img"
-          height="140"
-          image={data.image}
-          alt="green iguana"
-        />
+        <Link
+          to={`/courses/${data.course_id}`}
+          onClick={() => scroll.scrollToTop()}
+        >
+          <CardMedia
+            component="img"
+            height="140"
+            image={data.image}
+            alt="green iguana"
+          />
+        </Link>
         <CardContent>
           <Link
             to={`/courses/${data.course_id}`}
