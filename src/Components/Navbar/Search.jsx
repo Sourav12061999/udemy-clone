@@ -3,7 +3,8 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
 import Autocomplete from "./Autocomplete";
-function Search({ size, cont }) {
+import { useState } from "react";
+function Search({ size, cont, searchOpen, setsearchOpen }) {
   const Searchbox = styled("div")(({ theme }) => ({
     position: "relative",
     border: "1px solid black",
@@ -51,8 +52,11 @@ function Search({ size, cont }) {
         <StyledInputBase
           placeholder={cont ? cont : "Search for anything"}
           inputProps={{ "aria-label": "search" }}
+          onChange={() => {}}
+          onInput={() => {
+            if (!searchOpen) setsearchOpen(true);
+          }}
         />
-        <Autocomplete></Autocomplete>
       </Searchbox>
     </>
   );

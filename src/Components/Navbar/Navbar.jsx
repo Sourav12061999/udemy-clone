@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import url from "../../env";
 import { UserdataContest } from "../../App";
 import CatagoryBox from "./CatagoryBox";
+import Autocomplete from "./Autocomplete";
 // Importing styles
 import styles from "./styles";
 const Navbar = () => {
@@ -19,11 +20,13 @@ const Navbar = () => {
   // Destructuring the styles
   const { logo, extraButtons, hoverPink } = styles;
   const [catagoryOpen, setCatagoryOpen] = useState(false);
+  const [searchOpen, setsearchOpen] = useState(false);
+  const [searchParams, setSearchParams] = useState(null);
   return (
     <>
       <AppBar position="static" color="inherit" sx={{ mb: 0.5 }}>
         <Container maxWidth="xl">
-          <Toolbar disableGutters>
+          <Toolbar disableGutters sx={{ zIndex: 1001 }}>
             <Link to={"/"}>
               <Box>
                 <Typography variant="h6" noWrap component="div" sx={logo}>
@@ -43,7 +46,11 @@ const Navbar = () => {
               >
                 Catagories
               </Button>
-              <Search size={"35ch"} />
+              <Search
+                size={"35ch"}
+                searchOpen={searchOpen}
+                setsearchOpen={setsearchOpen}
+              />
               <Button
                 sx={{
                   color: "black",
@@ -99,6 +106,7 @@ const Navbar = () => {
         </Container>
       </AppBar>
       <CatagoryBox setOpen={setCatagoryOpen} open={catagoryOpen} />
+      <Autocomplete open={searchOpen} setOpen={setsearchOpen} />
     </>
   );
 };

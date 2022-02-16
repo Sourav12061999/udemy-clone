@@ -7,12 +7,12 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import ImageIcon from "@mui/icons-material/Image";
-function Autocomplete() {
+import Backdrop from "@mui/material/Backdrop";
+function Autocomplete({ setOpen, open }) {
   const Autocomplete = styled(Paper)(({ theme }) => ({
-    width: "95%",
+    width: "40vw",
     height: "300px",
     position: "absolute",
-    zIndex: 1000,
     top: 39.9,
     overflowY: "scroll",
   }));
@@ -28,7 +28,23 @@ function Autocomplete() {
       </ListItem>
     );
   };
-  return <Autocomplete>Autocomplete</Autocomplete>;
+  return (
+    <>
+      <Backdrop
+        sx={{
+          color: "transparent",
+          zIndex: 1,
+          //   mt: 8,
+        }}
+        open={open}
+        onClick={() => setOpen(false)}
+      >
+        <Autocomplete>
+          <List></List>
+        </Autocomplete>
+      </Backdrop>
+    </>
+  );
 }
 
 export default Autocomplete;
