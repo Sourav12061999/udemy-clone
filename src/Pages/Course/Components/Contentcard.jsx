@@ -12,8 +12,10 @@ import { CgInfinity } from "react-icons/cg";
 import { BsPhoneFill } from "react-icons/bs";
 import { SiPytest } from "react-icons/si";
 import useUpdatecart from "../../../Hooks/useUpdatecart";
-function Contentcard({ price, data, course_id }) {
-  const update_cart = useUpdatecart();
+import Snackbarcomp from "../../../Components/Snackbar/Snackbarcomp";
+function Contentcard({ price, data, course_id, courseID }) {
+  const { snackbarState, openSnackbar, setOpenSnackbar, update_cart } =
+    useUpdatecart();
   const icons = [
     MdVideoLabel,
     MdOutlineContactPage,
@@ -24,40 +26,51 @@ function Contentcard({ price, data, course_id }) {
     GrAchievement,
   ];
   return (
-    <Card sx={contentcard.card}>
-      <CardContent>
-        <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
-          ₹{price}
-        </Typography>
-        <Button
-          onClick={() => {
-            update_cart(course_id);
-          }}
-          color="secondary"
-          fullWidth
-          variant="contained"
-        >
-          Add to cart
-        </Button>
-        <Button sx={{ mt: 1, mb: 3 }} fullWidth variant="outlined">
-          Buy Now
-        </Button>
-        <Typography sx={{ fontWeight: 800 }}>This Course Includes:</Typography>
-        <List>
-          {data?.map((el, i) => {
-            let Icon = icons[i];
-            return (
-              <ListItem key={el}>
-                <ListItemAvatar>
-                  <Icon />
-                </ListItemAvatar>
-                <ListItemText primary={el} />
-              </ListItem>
-            );
-          })}
-        </List>
-      </CardContent>
-    </Card>
+    <>
+      <Card sx={contentcard.card}>
+        <CardContent>
+          <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
+            ₹{price}
+          </Typography>
+          <Button
+            onClick={() => {
+              update_cart(courseID);
+              console.log("OK");
+            }}
+            color="secondary"
+            fullWidth
+            variant="contained"
+          >
+            Add to cart
+          </Button>
+          <Button sx={{ mt: 1, mb: 3 }} fullWidth variant="outlined">
+            Buy Now
+          </Button>
+          <Typography sx={{ fontWeight: 800 }}>
+            This Course Includes:
+          </Typography>
+          <List>
+            {data?.map((el, i) => {
+              let Icon = icons[i];
+              return (
+                <ListItem key={el}>
+                  <ListItemAvatar>
+                    <Icon />
+                  </ListItemAvatar>
+                  <ListItemText primary={el} />
+                </ListItem>
+              );
+            })}
+          </List>
+        </CardContent>
+      </Card>
+      <Snackbarcomp
+        open={openSnackbar}
+        setOpen={setOpenSnackbar}
+        note={snackbarState.note}
+        severity={snackbarState.severity}
+      />
+    </>
   );
 }
 

@@ -14,6 +14,7 @@ import Pageloader from "./Components/Pageloader";
 function Course() {
   const [courseData, setcourseData] = useState({});
   const [open, setOpen] = useState(false);
+  const [courseID, setcourseID] = useState(null);
   const { course } = useParams();
   useEffect(() => {
     setOpen(true);
@@ -59,11 +60,12 @@ function Course() {
                   price={courseData.price}
                   data={courseData.course_includes}
                   course_id={course}
+                  courseID={courseID}
                 />
               </Box>
             </Box>
             <Box sx={{ margin: "auto", mt: 4, width: "90%" }}>
-              <Similar />
+              <Similar course_id={course} setcourseID={setcourseID} />
             </Box>
           </>
         ) : null}

@@ -6,15 +6,18 @@ import { useParams } from "react-router-dom";
 import CourseCard from "../../../Components/Course-Card/CourseCard";
 import Skeletoncard from "../../../Components/Course-Card/Skeletoncard";
 import Grid from "@mui/material/Grid";
-function Similar() {
+function Similar({ setcourseID, course_id }) {
   const [similarData, setsimilarData] = useState([]);
   const { course } = useParams();
   useEffect(() => {
     fetch(`${url}/CourseCard/getCards/courseId=${course}`)
       .then((res) => res.json())
       .then((res) => {
-        setsimilarData(res);
-        console.log(res);
+        let arr = res.filter((el) => {
+          if (el.course_id == course_id) setcourseID(el._id);
+          return el.course_id !== course_id;
+        });
+        setsimilarData(arr);
       })
       .catch((error) => console.error(error));
   }, [course]);
@@ -31,11 +34,11 @@ function Similar() {
               return (
                 <Grid
                   item
-                  sx={{ ml: 1, mb: 1 }}
+                  sx={{ ml: 1.3, mb: 1 }}
                   xs={11}
-                  sm={5}
-                  md={3.5}
-                  lg={2.2}
+                  sm={6}
+                  md={4.5}
+                  lg={2.7}
                   key={card._id}
                 >
                   <CourseCard data={card} />

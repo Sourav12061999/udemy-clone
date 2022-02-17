@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -19,8 +18,6 @@ const Navbar = () => {
   // Destructuring the styles
   const { logo, extraButtons, hoverPink } = styles;
   const [catagoryOpen, setCatagoryOpen] = useState(false);
-  const [searchOpen, setsearchOpen] = useState(false);
-  const [searchParams, setSearchParams] = useState(null);
   return (
     <>
       <AppBar position="static" color="inherit" sx={{ mb: 0.5 }}>
@@ -45,11 +42,7 @@ const Navbar = () => {
               >
                 Catagories
               </Button>
-              <Search
-                size={"35ch"}
-                searchOpen={searchOpen}
-                setsearchOpen={setsearchOpen}
-              />
+              <Search size={"35ch"} />
               <Button
                 sx={{
                   color: "black",
