@@ -13,7 +13,7 @@ import { BsPhoneFill } from "react-icons/bs";
 import { SiPytest } from "react-icons/si";
 import useUpdatecart from "../../../Hooks/useUpdatecart";
 import Snackbarcomp from "../../../Components/Snackbar/Snackbarcomp";
-function Contentcard({ price, data, course_id, courseID }) {
+function Contentcard({ price, data, courseID }) {
   const { snackbarState, openSnackbar, setOpenSnackbar, update_cart } =
     useUpdatecart();
   const icons = [

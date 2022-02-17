@@ -40,6 +40,7 @@ function Course() {
               rating={courseData.rating}
               students={courseData.students}
               image={courseData.image}
+              video={courseData.video}
             />
             <Box sx={Main.box}>
               <Box sx={Main.leftContent}>
@@ -59,7 +60,6 @@ function Course() {
                 <Contentcard
                   price={courseData.price}
                   data={courseData.course_includes}
-                  course_id={course}
                   courseID={courseID}
                 />
               </Box>
