@@ -1,3 +1,3 @@
-let url = "http://3.142.251.251:8080";
+let url = "https://udemy-clone-server-node.herokuapp.com/";
 
 export default url;
