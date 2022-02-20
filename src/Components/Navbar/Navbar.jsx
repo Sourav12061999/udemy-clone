@@ -65,15 +65,15 @@ const Navbar = () => {
               </Button>
               {!userData ? (
                 <Box>
-                  <a href={`${url}/userSignup/`}>
+                  <Link to={"/Signin"}>
                     <Button
                       sx={{ color: "black", border: "1px solid black" }}
                       variant="outlined"
                     >
                       Login
                     </Button>
-                  </a>
-                  <a href={`${url}/userSignup/auth/google`}>
+                  </Link>
+                  <Link to={"/Signup"}>
                     <Button
                       sx={{
                         color: "white",
@@ -87,7 +87,7 @@ const Navbar = () => {
                     >
                       Sign Up
                     </Button>
-                  </a>
+                  </Link>
                 </Box>
               ) : (
                 <></>

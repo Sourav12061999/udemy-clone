@@ -1,3 +1,4 @@
-let url = "https://udemy-clone-server-node.herokuapp.com";
+let url = "https://udemy-server-clone.herokuapp.com";
+// let url = "http://localhost";
 
 export default url;

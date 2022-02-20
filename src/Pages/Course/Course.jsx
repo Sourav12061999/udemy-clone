@@ -21,6 +21,7 @@ function Course() {
     fetch(`${url}/Courses/courseId=${course}`)
       .then((res) => res.json())
       .then((res2) => {
+        console.log(res2);
         setcourseData(res2);
         setOpen(false);
       })
@@ -28,7 +29,6 @@ function Course() {
         console.error(error);
       });
   }, [course]);
-
   return (
     <>
       <Box>

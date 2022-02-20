@@ -46,7 +46,7 @@ export default function Drawercomp({ state, setState, userData }) {
       {!userData ? (
         <>
           <Divider />
-          <a href={`${url}/userSignup/auth/google`}>
+          <Link to={"/Signup"}>
             <Button
               fullWidth
               variant="contained"
@@ -56,11 +56,22 @@ export default function Drawercomp({ state, setState, userData }) {
                 ":hover": {
                   background: "#424242",
                 },
+                mt: 1,
               }}
             >
               Sign up
             </Button>
-          </a>
+          </Link>
+          <Divider />
+          <Link to={"/Signin"}>
+            <Button
+              fullWidth
+              variant="outlined"
+              sx={{ color: "black", borderColor: "black", mt: 1 }}
+            >
+              LOGIN
+            </Button>
+          </Link>
         </>
       ) : (
         <></>

@@ -6,21 +6,22 @@ import Course from "./Pages/Course/Course";
 import Cart from "./Pages/Cart/Cart";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Signup from "./Components/Signup/Signup";
+import Signin from "./Components/Signin/Signin";
 import url from "./env";
-
-export const UserContext = React.createContext();
 export const UserdataContest = React.createContext();
+export const UserContext = React.createContext();
 function App() {
-  const [userID, setUserID] = useState(
-    document.cookie.trim().split("udemy-clone-signin=")[1]
-  );
   const [userData, setUserData] = useState(null);
+  const [userID, setUserID] = useState(
+    JSON.parse(localStorage.getItem("userID"))
+  );
+
   useEffect(() => {
-    if (userID) {
+    if (userID && userData?._id != userID) {
       fetch(`${url}/getuser/userID=${userID.trim()}`)
         .then((res) => res.json())
         .then((res) => {
-          console.log(res);
           setUserData(res);
         })
         .catch((error) => console.error(error));
@@ -45,6 +46,8 @@ function App() {
           */}
               <Route path="/courses/:course" element={<Course />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/Signup" element={<Signup />} />
+              <Route path="/Signin" element={<Signin />} />
             </Routes>
           </Router>
         </UserdataContest.Provider>
