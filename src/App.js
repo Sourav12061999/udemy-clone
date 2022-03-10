@@ -9,6 +9,7 @@ import React, { useState, useEffect } from "react";
 import Signup from "./Components/Signup/Signup";
 import Signin from "./Components/Signin/Signin";
 import url from "./env";
+import Footer from "./Components/Footer/Footer";
 export const UserdataContest = React.createContext();
 export const UserContext = React.createContext();
 function App() {
@@ -49,6 +50,7 @@ function App() {
               <Route path="/Signup" element={<Signup />} />
               <Route path="/Signin" element={<Signin />} />
             </Routes>
+            <Footer />
           </Router>
         </UserdataContest.Provider>
       </UserContext.Provider>
